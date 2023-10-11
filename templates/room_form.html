@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="lform">
+   <div class="login">
+       <form action="" method="post">
+            {%csrf_token%}
+            <h3>Create room</h3>
+            <p>{{form.title}}</p>
+            <p>{{form.content}}</p>
+            <p>{{form.category}}</p>
+            <input type="submit" value="Submit">
+       </form>
+    </div>
+</div>
+
+{% endblock content %}

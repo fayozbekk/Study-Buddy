@@ -1,0 +1,24 @@
+<div class="navbar">
+    <a href="/"></a><h2>Logo</h2></a>
+
+    <form action="" method="get">
+        <input class="inpt" type="text" placeholder="Search..." name="search🔎">
+    </form>
+
+    <a href="{% url 'create-room'%}">Create Room</a>
+    {% if request.user.is_authenticated %}
+        <div class="user">
+            {% if request.user.avatar %}
+                <img src="{{ request.user.avatar.url }}" alt="" width="40">
+            {% else %}
+
+            {% endif %}
+           <div class="logout">
+                <p>@{{ request.user.username }}</p>
+                <a href="{% url 'logout' %}"> Logout </a>
+           </div>
+        </div>
+    {% else %}
+        <a href="{% url 'login'%}">login</a>
+    {% endif %}
+</div>

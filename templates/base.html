@@ -1,0 +1,23 @@
+{% load static %}
+<!!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="with=devise-width, initial-scale=1.0">
+    <title>Study</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .main-page{
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+
+    {% block content %}
+    {% endblock content %}
+
+</body>
+</html>

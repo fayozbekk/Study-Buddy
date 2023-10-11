@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+     <div  class="lform">
+              <form class="login" action="" method="post">
+           {%csrf_token%}
+           <h2>Login</h2>
+            <p>{{ form.username }}</p>
+            <p>{{ form.password }}</p>
+            <p><a href="{% url 'registration' %}">Registration</a></p>
+           <input type="submit" value="Submit">
+     </form>
+     </div>
+{% endblock %}

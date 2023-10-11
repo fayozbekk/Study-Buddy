@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+     <div  class="lform">
+              <form class="login" action="" method="post" enctype="multipart/form-data">
+           {%csrf_token%}
+           <h2>Login</h2>
+                  <p>{{ form.errors }}</p>
+                  {% for i in form %}
+                     <p>{{ i }}</p>
+                  {% endfor %}
+           <input type="submit" value="Submit">
+     </form>
+     </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content">
+   <div class="obj">
+      <div class="hat">
+         <div class="title">
+             {{ rm.title}}
+             <div class="cat">{{ rm.category }}</div>
+
+         </div>
+         <div class="hosted">
+            <div class="usertime">
+               <h3> Hosted by @{{ rm.user.username}}</h3>
+               <p>{{ rm.created|timesince }}ago</p>
+            </div>
+            <img src="{{ rm.user.avatar.url }}" alt="" width="70">
+         </div>
+      </div>
+      <p>{{ rm.content }}</p>
+      <hr>
+      {% for message in message %}
+            <div class="mgs">
+            <div class="user">
+                 <img src="{{ request.user.avatar.url }}" alt="" width="40">
+                    <p>@{{ message.user.username }}</p>
+            </div>
+            <p>{{ message.message }}</p>
+            <small>{{ message.created|timesince}}</small>
+            </div>
+      {% endfor %}
+      <form action="" method="post>">
+          {% csrf_token %}
+          {{ form.message }}
+          <input type="submit" value="Send">
+      </form>
+   </div>
+</div>
+{% endblock %}

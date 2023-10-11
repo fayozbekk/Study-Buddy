@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-page">
+
+    <div class="Categories">
+    <h1>Browse Topics</h1>
+    <h5><a href="{% url 'create-category' %}"> Create Topic </a></h5>
+        <a href="/">All</a> <br>
+    {% for c in cats %}
+       <a href='/?search={{c.cat_name}}'> {{c.cat_name}} </a> <br>
+    {% endfor %}
+        {% if more %}
+        <a href="/"> More..↑</a>
+        {% else %}
+        <a href="/?more=True">More..↓</a>
+        {% endif %}
+    </div>
+
+    <div class="rooms">
+    <h3>There are {{ cnt }} roms available</h3>
+    {% for i in rms %}
+        {% if request.user.username == i.user.username or user.is_superuser %}
+        <a href="{% url 'update-room' i.pk %}">Update</a>
+        <a href="{% url 'delete-room' i.pk %}">Delete</a>
+        {% endif %}
+        <p>{{i.user.username}}</p>
+        <p>{{i.created|date:"d/m/Y H:i:s"}}</p>
+        <a href="{% url 'room_detail' i.pk %}"><h2>{{i.title}} [{{i.category}}]</h2></a>
+        <p>{{i.content|truncatewords:3}}</p>
+        <hr>
+    {%endfor%}
+    </div>
+</div>
+{% endblock content %}
